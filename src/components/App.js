@@ -10,11 +10,15 @@ const getData = async () =>{
 const Loader = () => <div id="loader">Loading...</div>
 const App = () => {
   const [todos,setTodos] = useState([])
+  const [loading,setLoding] = useState(false)
 
   useEffect(()=>{
+    setLoding(true)
     getData().then(data=> {
       setTodos(data)
-     })
+      setLoding(false)
+    })
+    
   },[])
   return (
     <div id="main">
